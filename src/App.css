@@ -44,6 +44,10 @@ body,h1,p,ul{
     font-weight: bold;
 }
 
+.list-content{
+    flex-grow: 1;
+}
+
 .dark{
     background-color: #393e46;
     color: #eeeeee;

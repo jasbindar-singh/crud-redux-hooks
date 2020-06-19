@@ -1,14 +1,16 @@
 import React, { useRef } from 'react'
-import { connect } from 'react-redux'
-import { addTodo } from '../redux/data/data.action'
+import { useDispatch } from 'react-redux'
+import { addData } from '../redux/data/data.action'
 
-function Form(props) {
+function Form() {
     console.log("Form Rendered!")
     const inputRef = useRef(null)
 
+    const dispatch = useDispatch()
+
     function handleSubmit(event){
         event.preventDefault();
-        props.addTodo(inputRef.current.value)
+        dispatch(addData(inputRef.current.value))
         inputRef.current.value = ''
     }
 
@@ -20,12 +22,13 @@ function Form(props) {
     )
 }
 
-function mapStateToDispatch(dispatch){
-    return {
-        addTodo: function(todo){
-            dispatch(addTodo(todo))
-        }
-    }
-}
+// function mapStateToDispatch(dispatch){
+//     return {
+//         addTodo: function(todo){
+//             dispatch(addTodo(todo))
+//         }
+//     }
+// }
 
-export default connect(null, mapStateToDispatch)(Form)
+// export default connect(null, mapStateToDispatch)(Form)
+export default Form

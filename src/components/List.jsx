@@ -1,21 +1,18 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux' 
-import { deleteTodo } from '../redux/data/data.action'
+import { useSelector } from 'react-redux'
+import ListItem from './ListItem'
 
 function List() {
     console.log("List Rendered!")
 
-    let { data } = useSelector();
+    let data = useSelector(state => state.data);
 
     return (
         <ul className="list">
             {
-                props.data.length ? (
-                    props.data.map((data, index) => {
-                        return (<li key={data.id} className="list-item">
-                            <p>{`${index + 1}. ${data.content}`}</p>
-                            <div className="btn" onClick={() => props.deleteTodo(data.id)}>Delete</div>
-                        </li>)
+                data.length ? (
+                    data.map((doc, index) => {
+                        return <ListItem key={doc.id} doc={doc} index={index}/>
                     })
                 ) : (
                     "Empty!"
@@ -25,18 +22,19 @@ function List() {
     )
 }
 
-function mapStateToprops(state){
-    return {
-        data: state.data
-    }
-}
+// function mapStateToprops(state){
+//     return {
+//         data: state.data
+//     }
+// }
 
-function mapDispatchToprops(dispatch){
-    return {
-        deleteTodo: function(id){
-            dispatch(deleteTodo(id))
-        }
-    }
-}
+// function mapDispatchToprops(dispatch){
+//     return {
+//         deleteTodo: function(id){
+//             dispatch(deleteTodo(id))
+//         }
+//     }
+// }
 
-export default connect(mapStateToprops, mapDispatchToprops)(List)
+// export default connect(mapStateToprops, mapDispatchToprops)(List)
+export default List
