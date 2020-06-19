@@ -13,3 +13,10 @@ export function deleteData(id){
         payload: id
     }
 }
+
+export function updateData(dataObj){
+    return {
+        type: types.UPDATE_DATA,
+        payload: {...dataObj}
+    }
+}

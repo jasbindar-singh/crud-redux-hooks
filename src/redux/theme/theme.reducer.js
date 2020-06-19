@@ -1,6 +1,6 @@
 import { types } from "./theme.types";
 
-let initialState = 'light'
+let initialState = 'dark'
 
 export default function themeReducer(state = initialState, action){
     switch(action.type){
